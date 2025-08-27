@@ -1,9 +1,7 @@
-import { Chat } from "./components/chat.tsx";
+import { Chat } from './components/chat/Chat.tsx';
 
 function App() {
-  return (
-    <Chat />
-  )
+  return <Chat />;
 }
 
-export default App
+export default App;

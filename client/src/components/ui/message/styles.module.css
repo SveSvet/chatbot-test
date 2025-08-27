@@ -1,0 +1,24 @@
+.message {
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  background-color: var(--main-color);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  transition: all 0.1s ease-in-out;
+}
+
+.message:active {
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.4);
+  transform: translate(1px, 1px);
+}
+
+.sender {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.text {
+  color: #53989f;
+  word-break: break-word;
+}
