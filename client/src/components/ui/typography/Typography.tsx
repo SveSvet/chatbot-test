@@ -1,6 +1,6 @@
 import type { FC, JSX, ReactNode } from 'react';
 // @ts-ignore
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 import { clsx } from 'clsx';
 
 type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'p';

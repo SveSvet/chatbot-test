@@ -1,11 +1,12 @@
 import { type FormEvent, useEffect, useRef, useState } from 'react';
 import { sendMessage } from '../../api/fetches.ts';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useSendMessage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [messages, setMessages] = useState<
-    { from: 'user' | 'bot'; text: string }[]
+    { from: 'user' | 'bot'; text: string; id: string }[]
   >([]);
   const [input, setInput] = useState('');
 
@@ -20,16 +21,23 @@ export const useSendMessage = () => {
   const handleSend = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim()) return;
+    const uiId = uuidv4();
 
-    setMessages((prev) => [...prev, { from: 'user', text: input }]);
+    setMessages((prev) => [...prev, { from: 'user', text: input, id: uiId }]);
     const userMessage = input;
     setInput('');
 
     try {
-      const reply = await sendMessage(userMessage);
-      setMessages((prev) => [...prev, { from: 'bot', text: reply }]);
+      const data = await sendMessage(userMessage);
+      setMessages((prev) => [
+        ...prev,
+        { from: 'bot', text: data.reply, id: data.id },
+      ]);
     } catch {
-      setMessages((prev) => [...prev, { from: 'bot', text: 'Ошибка сервера' }]);
+      setMessages((prev) => [
+        ...prev,
+        { from: 'bot', text: 'Ошибка сервера', id: uiId },
+      ]);
     }
   };
 
@@ -39,5 +47,5 @@ export const useSendMessage = () => {
     input,
     setInput,
     handleSend,
-  }
-}
+  };
+};

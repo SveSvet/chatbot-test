@@ -9,7 +9,11 @@ interface MessageProps {
   className?: string;
 }
 
-export const Message: React.FC<MessageProps> = ({ sender, text, className }) => {
+export const Message: React.FC<MessageProps> = ({
+  sender,
+  text,
+  className,
+}) => {
   return (
     <div className={clsx(styles.message, className)}>
       <Typography className={styles.sender}>{sender}</Typography>

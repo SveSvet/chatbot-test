@@ -3,10 +3,12 @@
   border: 3px solid var(--border-color);
   background-color: var(--main-color);
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .button:hover {
-  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.4);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4);
   transform: translate(1px, 1px);
 }

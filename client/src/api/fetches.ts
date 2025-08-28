@@ -1,6 +1,12 @@
 import { api } from '../utils/api.ts';
 
-export const sendMessage = async (message: string): Promise<string> => {
-  const data = await api.post<{ reply: string }>('/message', { message });
-  return data.reply;
+type TFetchesResponse = {
+  reply: string;
+  id: string;
+};
+
+export const sendMessage = async (
+  message: string,
+): Promise<TFetchesResponse> => {
+  return await api.post<TFetchesResponse>('/message', { message });
 };

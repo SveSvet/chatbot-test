@@ -1,5 +1,3 @@
-const BASE_URL = 'http://localhost:8000/api';
-
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 const request = async <T>(
@@ -8,7 +6,7 @@ const request = async <T>(
   body?: unknown,
 ): Promise<T> => {
   try {
-    const response = await fetch(`${BASE_URL}${url}`, {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}${url}`, {
       method,
       headers: {
         'Content-Type': 'application/json',
